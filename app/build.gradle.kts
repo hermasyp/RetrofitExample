@@ -26,6 +26,16 @@ android {
             )
         }
     }
+    flavorDimensions += "version"
+    productFlavors {
+        create("production") {
+            buildConfigField("String", "BASE_URL", "\"https://dummyjson.com/\"")
+        }
+        create("integration") {
+            buildConfigField("String", "BASE_URL", "\"https://dummyjson.com/\"")
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -35,6 +45,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -59,7 +70,7 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.6.1")
 
     //retrofit & okhttp
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.squareup.okhttp3:okhttp:4.11.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
 }
